@@ -25,8 +25,8 @@ export interface Experience {
 export const PORTFOLIO_DATA = {
   personal: {
     name: "Kishan Nadageri",
-    title: "Software Engineer",
-    headline: "Full Stack Software Engineer with 3.5+ years of enterprise experience in .NET, Microsoft Azure Cloud, and Distributed Real-Time Systems, complemented by graduate research in Approximate Computing (AxC) and Symbolic Hardware Acceleration.",
+    title: "Full Stack Software Engineer",
+    headline: "Experienced Full Stack Engineer with over 3.5 years of expertise in architecting, developing, and deploying robust .NET solutions across the Microsoft Azure platform. Proven track record in leading backend development, optimizing cloud applications, and delivering high-impact enterprise projects at Accenture. Adept at collaborating with cross-functional teams to ensure seamless system integration, high reliability, and project success.",
     email: "kishannadageri06@gmail.com",
     phone: "+91-8904526667",
     location: "India",
@@ -39,8 +39,8 @@ export const PORTFOLIO_DATA = {
 
   highlights: [
     { label: "Experience", value: "3.5+ Yrs", detail: "Enterprise scale at Accenture" },
-    { label: "Education", value: "M.Sc. Candidate", detail: "Computer Engineering, Uni Paderborn" },
-    { label: "Recognition", value: "2x ACE Awards", detail: "Delivery & technical excellence" },
+    { label: "Core Stack", value: ".NET & Azure", detail: "Cloud microservices & APIs" },
+    { label: "Recognition", value: "2x ACE Awards", detail: "Accenture technical excellence" },
     { label: "Certifications", value: "3x Microsoft", detail: "AZ-900, MS-900, PL-900" }
   ],
 
