@@ -26,7 +26,7 @@ export const PORTFOLIO_DATA = {
   personal: {
     name: "Kishan Nadageri",
     title: "Software Engineer",
-    headline: "Full Stack Software Engineer with 3.5+ years of enterprise experience in .NET, Microsoft Azure Cloud, and Distributed Real-Time Systems, complemented by academic projects in Explainable AI and PyTorch.",
+    headline: "Full Stack Software Engineer with 3.5+ years of enterprise experience in .NET, Microsoft Azure Cloud, and Distributed Real-Time Systems, complemented by graduate work in Explainable AI, Sensor Fusion, and Full-Stack Engineering.",
     email: "kishannadageri06@gmail.com",
     phone: "+91-8904526667",
     location: "India",
@@ -72,7 +72,7 @@ export const PORTFOLIO_DATA = {
     }
   ] as Experience[],
 
-  // Segregated Work & Enterprise Projects
+  // Segregated Work & Enterprise Projects (Accenture)
   workProjects: [
     {
       id: "copilot-transcription",
@@ -138,7 +138,7 @@ export const PORTFOLIO_DATA = {
     }
   ] as Project[],
 
-  // Segregated Personal & Open-Source Projects (GitHub)
+  // Refined Personal, Academic & System Engineering Projects
   personalProjects: [
     {
       id: "xai-framework",
@@ -157,36 +157,34 @@ export const PORTFOLIO_DATA = {
       badge: "Graduate Project"
     },
     {
-      id: "azure-messaging",
-      title: "Azure Brokered Messaging Architecture",
+      id: "gps-denied-drone",
+      title: "GPS-Denied Autonomous Drone Navigation",
       projectType: "personal",
-      clientOrContext: "Open Source / GitHub",
-      role: "Personal Project",
-      timeline: "Open Source",
-      description: "Production-ready messaging patterns leveraging Azure Service Bus (Queues and Topics). Implements reliable asynchronous publishers, consumers, and a brokered console chat application in C#.",
+      clientOrContext: "Robotics & Embedded Systems",
+      role: "Simulation & Algorithms Developer",
+      timeline: "2026",
+      description: "Autonomous quadcopter guidance and state estimation system operating in GPS-denied environments. Uses pure mathematics and 6-DOF IMU sensor fusion to estimate orientation and execute waypoint navigation.",
       highlights: [
-        "Implemented publisher/subscriber messaging with topic filtering, dead-letter queues, and message batching.",
-        "Built a multi-user brokered console chat application verifying real-time queue delivery guarantees."
+        "Designed Complementary Filter fusing 3-axis accelerometer and gyroscope readings to suppress sensor drift and estimate 3D attitude (Roll, Pitch, Yaw).",
+        "Applied 3D rotation matrices to project body accelerations into the world coordinate frame and compute vector guidance in Webots 3D simulation."
       ],
-      technologies: ["C#", ".NET", "Azure Service Bus", "Message Queues", "Pub/Sub"],
-      github: "https://github.com/KkishanN/AzureServices-Basics-Csharp",
-      badge: "Open Source"
+      technologies: ["Python", "State Estimation", "IMU Sensor Fusion", "Webots 3D", "Vector Guidance", "Kinematics"],
+      badge: "Robotics & Math"
     },
     {
-      id: "tensortonic-dl",
-      title: "TensorTonic Deep Learning Implementations",
+      id: "adhd-life-manager",
+      title: "ADHD Life Manager — Focus & Behavioral Health App",
       projectType: "personal",
-      clientOrContext: "Open Source / GitHub",
-      role: "Personal Project",
+      clientOrContext: "Full-Stack Web Application",
+      role: "Full Stack Developer",
       timeline: "2026",
-      description: "Algorithmic implementations of tensor transformations, autograd routines, and fundamental deep learning mechanics implemented from first principles in Python.",
+      description: "Evidence-based productivity and behavioral health web application designed to support executive functioning through focus timers, prioritized task triage, and CBT-adapted habit tracking.",
       highlights: [
-        "Authored mathematical routines for matrix factorizations, backpropagation derivatives, and layer activations.",
-        "Benchmarked tensor transformation speed and numerical stability across optimization routines."
+        "Architected an Express REST API with persistent JSON state management and multi-metric daily check-ins.",
+        "Built responsive client interface featuring Pomodoro focus tracking, priority task decomposition, and streak pattern analytics."
       ],
-      technologies: ["Python", "PyTorch", "Linear Algebra", "Algorithms"],
-      github: "https://github.com/KkishanN/TensorTonic-Solutions",
-      badge: "Algorithms & ML"
+      technologies: ["JavaScript", "Node.js", "Express.js", "REST APIs", "State Management", "CSS3"],
+      badge: "Full-Stack App"
     }
   ] as Project[],
 
