@@ -11,11 +11,6 @@ export interface Project {
   github?: string;
   award?: string;
   badge: string;
-  extendedDetails?: {
-    problem: string;
-    layers: { name: string; detail: string }[];
-    impact: string;
-  };
 }
 
 export interface Experience {
@@ -146,65 +141,56 @@ export const PORTFOLIO_DATA = {
   // Refined Research & Open-Source Projects (With Actual Project Titles & GitHub Links)
   personalProjects: [
     {
-      id: "approximate-interaction-computing",
-      title: "Approximate Interaction Computing",
+      id: "approximate-ml-lenet5",
+      title: "Approximate Computing: LeNet-5 Pruning & Compression",
       projectType: "personal",
-      clientOrContext: "Universität Paderborn • Approximate Computing (AxC)",
-      role: "Graduate Systems Researcher",
+      clientOrContext: "Approximate Computing (AxC)",
+      role: "Systems & ML Exploration",
       timeline: "2026",
-      description: "Accuracy-tunable memory and reduction layers for graph-rewriting runtimes (Interaction Calculus / HVM2 / Bend). Resolves GPU memory-latency bottlenecks by treating computation error as a schedulable resource across three composable approximation layers.",
+      description: "Evaluated algorithmic approximation techniques on convolutional neural networks (LeNet-5 on MNIST), assessing the impact of structured weight pruning, PCA dimensionality reduction, and pixel variance filtering on accuracy and compute efficiency.",
       highlights: [
-        "Identified GPU bottleneck on RTX 4090: tree-reduction workloads are 84% memory-latency bound with stack spill traffic ~18× heap traffic and low 16.67% warp occupancy.",
-        "Layer A1 (Approximate Liveness): Replaced exact variable tracking with probabilistic sketches and a novel 'resurrection operator', ensuring bounded error P(divergence) ≤ ε with safe sub-net re-evaluation.",
-        "Layer A2 (Precision-Scaled Encodings): Lossy numeric leaf tags with interval arithmetic envelopes [lo, hi] and hash-approximate DUP-SUP label equality to eliminate rewrite cascades.",
-        "Layer A3 (Tolerance-Based Memoization): Structural fingerprinting of sub-nets modulo labels/erasures to reuse evaluated normal forms within constructor distance tolerance τ.",
-        "Targeted Improvements: Drastically curbed memory spills on bitonic sort trees, targeted lifting GPU occupancy toward 30%+, and produced an energy/accuracy Pareto frontier."
+        "Weight Pruning: Implemented magnitude-based and uniform random pruning across all fully connected layers (10%–50%), evaluating pre- and post-retraining classification recovery.",
+        "Sparsity Resilience: Demonstrated that magnitude pruning retains a 0.976 test F1-score at 50% parameter sparsity (vs. 0.988 baseline), significantly outperforming random pruning (0.938).",
+        "PCA Data Compression: Applied PCA to flatten MNIST images, showing that truncating 20% of low-variance components preserves an F1-score of 0.983 with virtually zero degradation.",
+        "Combined Pipeline: Integrated 20% PCA input compression with 30% magnitude weight pruning, achieving a ~44% parameter/FLOP reduction while maintaining a 0.979 test F1-score."
       ],
-      technologies: ["C", "CUDA", "Approximate Computing", "GPU Architecture", "Graph Rewriting", "Interaction Nets", "NVML"],
-      github: "https://github.com/KkishanN/AxC",
-      badge: "Systems Research",
-      extendedDetails: {
-        problem: "Massively parallel graph reduction on GPUs is 84% memory-latency bound with low warp occupancy (16.67%) and excessive stack spills (18× heap traffic).",
-        layers: [
-          { name: "Layer A1: Approximate Liveness", detail: "Probabilistic sketches over variable scopes + resurrection operator for bounded re-evaluation." },
-          { name: "Layer A2: Precision Scaling", detail: "Interval-based numeric payloads and hash-approximate label matching to shrink node memory footprint." },
-          { name: "Layer A3: Rewrite Memoization", detail: "Structural sub-net caching within constructor distance tolerance τ to bypass redundant reductions." }
-        ],
-        impact: "Cuts memory traffic, targets doubling GPU warp occupancy, and establishes an accuracy/energy Pareto frontier for symbolic computing."
-      }
+      technologies: ["Python", "PyTorch", "NumPy", "Scikit-Learn", "CNN / LeNet-5", "Model Pruning", "PCA"],
+      github: "https://github.com/KkishanN/AxC/tree/main/lab1",
+      badge: "Approximate ML"
     },
     {
       id: "spatial-interaction-reducer",
       title: "Silicon for Symbolic Computation: Spatial Interaction Reducer",
       projectType: "personal",
-      clientOrContext: "Universität Paderborn • Computer Architecture",
+      clientOrContext: "Hardware Architecture & Simulation",
       role: "Hardware Architecture & Simulation",
       timeline: "2026",
-      description: "Cycle-accurate hardware simulator and FPGA architecture for Interaction Calculus graph reduction. Maps interaction combinators directly into decentralized spatial rule blocks with interleaved on-chip BRAM memory.",
+      description: "Cycle-accurate hardware simulator and FPGA architecture for Interaction Calculus graph reduction, alongside an approximate DSP filter design space exploration (DSE) framework in VHDL and Python.",
       highlights: [
         "Implemented cycle-accurate software simulator in C++ modeling 8 parallel spatial rule-blocks (APP-LAM, DUP-SUP, APP-SUP, DUP-LAM, ERA, NUM/SUC).",
         "Engineered 8-bank interleaved on-chip BRAM memory system with conflict arbitration and free-list recycling for floating duplication nodes.",
-        "Achieved 80.01 MInt/s throughput at 250 MHz clock on Depth-14 bitonic reduction net, delivering 2.26× higher energy efficiency than CPU baselines (184.98 J/GInt vs 418 J/GInt)."
+        "Achieved 80.01 MInt/s throughput at 250 MHz clock on Depth-14 bitonic reduction net, delivering 2.26× higher energy efficiency than CPU baselines (184.98 J/GInt vs 418 J/GInt).",
+        "Developed Beam Search DSE framework for approximate 10-stage FIR filters, achieving 10.34% hardware area savings under strict MSE ≤ 5.0% error constraint on 10,000 samples."
       ],
-      technologies: ["C++17", "FPGA Architecture", "BRAM Banking", "Cycle-Accurate Sim", "Spatial Dataflow", "Interaction Nets"],
-      github: "https://github.com/KkishanN/AxC",
-      badge: "Hardware Simulator"
+      technologies: ["C++17", "VHDL", "FPGA Architecture", "BRAM Banking", "Cycle-Accurate Sim", "Spatial Dataflow", "Design Space Exploration"],
+      github: "https://github.com/KkishanN/AxC/tree/main/lab2",
+      badge: "Hardware & Systems"
     },
     {
       id: "xai-framework",
       title: "Explainable AI (XAI) & Interpretable ML",
       projectType: "personal",
-      clientOrContext: "Universität Paderborn Coursework",
-      role: "Graduate Researcher & Developer",
+      clientOrContext: "Interpretable Machine Learning",
+      role: "Research & Development",
       timeline: "2025 – Present",
-      description: "Interpretable machine learning framework developed at Universität Paderborn. Explores feature attribution, model interpretability, and graph convolutions (SGC) to evaluate neural network decision boundaries.",
+      description: "Interpretable machine learning framework exploring feature attribution, model interpretability, and graph convolutions (SGC) to evaluate neural network decision boundaries.",
       highlights: [
         "Implemented graph neural network baseline (Simple Graph Convolution) and feature engineering pipelines in PyTorch.",
         "Evaluated model explanation fidelity using attribution metrics and interpretable ML visualizations."
       ],
       technologies: ["Python", "PyTorch", "Graph Neural Networks", "Feature Engineering", "XAI"],
       github: "https://github.com/KkishanN/XAI_prj",
-      badge: "Graduate Coursework"
+      badge: "ML Research"
     }
   ] as Project[],
 

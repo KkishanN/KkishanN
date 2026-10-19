@@ -60,39 +60,6 @@ export const ProjectsSection: React.FC = () => {
             {proj.description}
           </p>
 
-          {/* Extended Details Box for AxC Task 1 */}
-          {proj.extendedDetails && (
-            <div className="my-3 p-3.5 rounded-lg bg-slate-50 border border-slate-200 text-xs space-y-2.5">
-              <div>
-                <span className="font-bold text-slate-800 uppercase tracking-wider text-[10px] block mb-0.5">
-                  The Bottleneck Analyzed:
-                </span>
-                <p className="text-slate-600 leading-relaxed text-[11px]">
-                  {proj.extendedDetails.problem}
-                </p>
-              </div>
-
-              <div>
-                <span className="font-bold text-slate-800 uppercase tracking-wider text-[10px] block mb-1">
-                  Three Composable Approximation Layers:
-                </span>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                  {proj.extendedDetails.layers.map((layer, lIdx) => (
-                    <div key={lIdx} className="p-2 rounded bg-white border border-slate-200">
-                      <p className="font-semibold text-blue-700 text-[11px] mb-0.5">{layer.name}</p>
-                      <p className="text-slate-600 text-[10px] leading-snug">{layer.detail}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-1.5 border-t border-slate-200 text-[11px] text-slate-700 flex items-center gap-1.5">
-                <span className="font-bold text-emerald-700">Target Impact:</span>
-                <span>{proj.extendedDetails.impact}</span>
-              </div>
-            </div>
-          )}
-
           {/* Key Highlights */}
           {proj.highlights && proj.highlights.length > 0 && (
             <ul className="space-y-1 mb-4 text-xs text-slate-600">
