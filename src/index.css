@@ -8,66 +8,24 @@
   }
   
   body {
-    background-color: #0a0d14;
-    color: #e2e8f0;
-    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
-  /* Custom scrollbar */
+  /* Custom subtle scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #0d121f;
+    background: #f1f5f9;
   }
   ::-webkit-scrollbar-thumb {
-    background: #23304a;
-    border-radius: 4px;
+    background: #cbd5e1;
+    border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #3b82f6;
+    background: #94a3b8;
   }
-}
-
-/* Background Grid Pattern */
-.bg-grid-pattern {
-  background-size: 36px 36px;
-  background-image: 
-    linear-gradient(to right, rgba(35, 48, 74, 0.25) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(35, 48, 74, 0.25) 1px, transparent 1px);
-}
-
-.bg-dot-pattern {
-  background-size: 24px 24px;
-  background-image: radial-gradient(rgba(0, 240, 255, 0.15) 1px, transparent 1px);
-}
-
-/* Glowing text utilities */
-.text-glow-cyan {
-  text-shadow: 0 0 16px rgba(0, 240, 255, 0.6);
-}
-
-.text-glow-green {
-  text-shadow: 0 0 16px rgba(0, 255, 136, 0.6);
-}
-
-/* Terminal blink cursor */
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.animate-cursor {
-  animation: blink 1s infinite;
-}
-
-/* Subtle pulse border */
-@keyframes border-glow {
-  0%, 100% { border-color: rgba(0, 240, 255, 0.2); }
-  50% { border-color: rgba(0, 240, 255, 0.5); }
-}
-
-.animate-border-glow {
-  animation: border-glow 4s ease-in-out infinite;
 }

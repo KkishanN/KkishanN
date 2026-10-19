@@ -1,25 +1,23 @@
 import React from 'react';
 import { Navbar } from './components/Navbar';
-import { TerminalHero } from './components/TerminalHero';
-import { ArchitectureShowcase } from './components/ArchitectureShowcase';
+import { Hero } from './components/Hero';
 import { ExperienceSection } from './components/ExperienceSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { SkillsMatrix } from './components/SkillsMatrix';
-import { CertificationsAndAwards } from './components/CertificationsAndAwards';
+import { EducationAndCerts } from './components/EducationAndCerts';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 
 export const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#0a0d14] text-slate-100 flex flex-col font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
       <Navbar />
       <main className="flex-1">
-        <TerminalHero />
-        <ArchitectureShowcase />
+        <Hero />
         <ExperienceSection />
         <ProjectsSection />
         <SkillsMatrix />
-        <CertificationsAndAwards />
+        <EducationAndCerts />
         <ContactSection />
       </main>
       <Footer />

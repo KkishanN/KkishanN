@@ -1,135 +1,135 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { Terminal, Download, Menu, X, ExternalLink, Code2 } from 'lucide-react';
+import { Download, Github, Linkedin, Mail, Menu, X } from 'lucide-react';
 
-interface NavbarProps {
-  onOpenTerminal?: () => void;
-}
-
-export const Navbar: React.FC<NavbarProps> = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+export const Navbar: React.FC = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Overview', href: '#overview' },
+    { name: 'About', href: '#about' },
     { name: 'Experience', href: '#experience' },
-    { name: 'Architecture', href: '#architecture' },
     { name: 'Projects', href: '#projects' },
     { name: 'Skills', href: '#skills' },
-    { name: 'Education & Certs', href: '#credentials' },
+    { name: 'Education', href: '#education' },
     { name: 'Contact', href: '#contact' },
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[#0a0d14]/90 backdrop-blur-md border-b border-term-border/80 shadow-lg shadow-black/40'
-          : 'bg-transparent border-b border-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
-          {/* Logo / Terminal Prompt */}
-          <a
-            href="#overview"
-            className="flex items-center gap-2.5 font-mono text-sm tracking-tight text-slate-200 group hover:text-term-accent transition-colors"
-          >
-            <div className="w-8 h-8 rounded-lg bg-term-surface border border-term-border flex items-center justify-center text-term-accent group-hover:border-term-accent/60 transition-colors">
-              <Terminal className="w-4 h-4" />
+          
+          {/* Logo */}
+          <a href="#about" className="flex items-center gap-2 group">
+            <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-sm shadow-sm group-hover:bg-blue-700 transition-colors">
+              KN
             </div>
-            <div className="flex flex-col">
-              <span className="font-semibold text-slate-100 flex items-center gap-1.5">
-                kishan@paderborn
-                <span className="text-term-accent">:~$</span>
+            <div>
+              <span className="font-bold text-slate-900 text-sm tracking-tight block">
+                {PORTFOLIO_DATA.personal.name}
               </span>
-              <span className="text-[10px] text-term-muted font-sans font-medium -mt-0.5">
+              <span className="text-[11px] text-slate-500 block -mt-0.5">
                 Software Engineer
               </span>
             </div>
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-            {navLinks.map((link, idx) => (
+          <nav className="hidden md:flex items-center gap-6">
+            {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3 py-1.5 rounded-md text-xs font-mono text-slate-300 hover:text-term-accent hover:bg-term-surface/70 transition-all duration-150"
+                className="text-xs font-medium text-slate-600 hover:text-blue-600 transition-colors"
               >
-                <span className="text-term-muted mr-1">0{idx + 1}.</span>
                 {link.name}
               </a>
             ))}
           </nav>
 
-          {/* Right Action: Status Pill & Resume Button */}
+          {/* Action Links */}
           <div className="hidden sm:flex items-center gap-3">
-            <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-term-surface/80 border border-term-border text-[11px] font-mono text-slate-300">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-term-green opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-term-green"></span>
-              </span>
-              <span className="text-term-muted">Paderborn, DE</span>
-            </div>
+            <a
+              href={PORTFOLIO_DATA.personal.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+              title="GitHub Profile"
+            >
+              <Github className="w-4 h-4" />
+            </a>
+
+            <a
+              href={PORTFOLIO_DATA.personal.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg text-slate-500 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+              title="LinkedIn Profile"
+            >
+              <Linkedin className="w-4 h-4" />
+            </a>
 
             <a
               href={PORTFOLIO_DATA.personal.resumeUrl}
               download="Kishan_Nadageri_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-term-accent/10 border border-term-accent/40 text-term-accent hover:bg-term-accent hover:text-black font-mono text-xs font-semibold transition-all duration-200 shadow-glow"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-blue-600 text-white text-xs font-medium transition-colors shadow-sm"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Resume PDF</span>
+              <span>Resume</span>
             </a>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="flex sm:hidden">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-term-surface border border-term-border text-slate-300 hover:text-white"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="sm:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100"
+            aria-label="Toggle Navigation"
+          >
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+
         </div>
       </div>
 
-      {/* Mobile dropdown */}
-      {mobileMenuOpen && (
-        <div className="sm:hidden bg-term-surface/95 border-b border-term-border px-4 pt-2 pb-6 space-y-2 backdrop-blur-xl">
-          {navLinks.map((link, idx) => (
+      {/* Mobile Dropdown */}
+      {mobileOpen && (
+        <div className="sm:hidden border-b border-slate-200 bg-white px-4 py-3 space-y-2">
+          {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-md font-mono text-xs text-slate-200 hover:text-term-accent hover:bg-term-panel"
+              onClick={() => setMobileOpen(false)}
+              className="block py-1.5 text-xs font-medium text-slate-700 hover:text-blue-600"
             >
-              <span className="text-term-muted mr-2">0{idx + 1}.</span>
               {link.name}
             </a>
           ))}
-          <div className="pt-2 border-t border-term-border flex flex-col gap-2">
+          <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
+            <div className="flex gap-2">
+              <a
+                href={PORTFOLIO_DATA.personal.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 text-slate-600"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+              <a
+                href={PORTFOLIO_DATA.personal.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 text-slate-600"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+            </div>
             <a
               href={PORTFOLIO_DATA.personal.resumeUrl}
               download="Kishan_Nadageri_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-term-accent text-black font-mono text-xs font-semibold shadow-glow"
+              className="inline-flex items-center gap-1 px-3 py-1 rounded bg-slate-900 text-white text-xs font-medium"
             >
-              <Download className="w-4 h-4" />
-              <span>Download Resume PDF</span>
+              <Download className="w-3 h-3" />
+              <span>Download Resume</span>
             </a>
           </div>
         </div>
