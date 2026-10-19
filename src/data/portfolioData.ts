@@ -159,22 +159,22 @@ export const PORTFOLIO_DATA = {
       badge: "Approximate ML"
     },
     {
-      id: "spatial-interaction-reducer",
-      title: "Silicon for Symbolic Computation: Spatial Interaction Reducer",
+      id: "approximate-fir-dse",
+      title: "Approximate Computing: FIR Filter & Beam Search DSE",
       projectType: "personal",
-      clientOrContext: "Hardware Architecture & Simulation",
-      role: "Hardware Architecture & Simulation",
+      clientOrContext: "Approximate Computing (AxC)",
+      role: "Hardware Architecture & Synthesis",
       timeline: "2026",
-      description: "Cycle-accurate hardware simulator and FPGA architecture for Interaction Calculus graph reduction, alongside an approximate DSP filter design space exploration (DSE) framework in VHDL and Python.",
+      description: "Designed an approximate 10-stage digital FIR filter in VHDL and developed an automated Beam Search Design Space Exploration (DSE) framework in Python to optimize circuit area under strict error and timing constraints.",
       highlights: [
-        "Implemented cycle-accurate software simulator in C++ modeling 8 parallel spatial rule-blocks (APP-LAM, DUP-SUP, APP-SUP, DUP-LAM, ERA, NUM/SUC).",
-        "Engineered 8-bank interleaved on-chip BRAM memory system with conflict arbitration and free-list recycling for floating duplication nodes.",
-        "Achieved 80.01 MInt/s throughput at 250 MHz clock on Depth-14 bitonic reduction net, delivering 2.26× higher energy efficiency than CPU baselines (184.98 J/GInt vs 418 J/GInt).",
-        "Developed Beam Search DSE framework for approximate 10-stage FIR filters, achieving 10.34% hardware area savings under strict MSE ≤ 5.0% error constraint on 10,000 samples."
+        "Pipelined Architecture: Implemented a synthesizable 10-stage FIR filter in VHDL meeting a 1.0 ns (1.0 GHz) clock period constraint and latency ≤ 3 cycles.",
+        "Parametric Approximations: Developed configurable 32-bit adders and multipliers with parameterized 1–8 bit MSB/LSB truncation, eliminating lower carry chains and partial product columns.",
+        "Beam Search DSE (K=3): Built an automated exploration algorithm evaluating configurations across 10,000 uniform random inputs [0, 255] without repetition under a strict MSE ≤ 5.0% threshold.",
+        "Pareto Optimization: Achieved 10.34% circuit area savings (12,176.0 μm² vs. 13,580.0 μm² baseline) with an ultra-low Normalized MSE of 0.000031%, synthesized via Synopsys Design Compiler."
       ],
-      technologies: ["C++17", "VHDL", "FPGA Architecture", "BRAM Banking", "Cycle-Accurate Sim", "Spatial Dataflow", "Design Space Exploration"],
+      technologies: ["VHDL", "Python", "Synopsys DC", "Design Space Exploration (DSE)", "Approximate Computing", "DSP Filters", "Pareto Analysis"],
       github: "https://github.com/KkishanN/AxC/tree/main/lab2",
-      badge: "Hardware & Systems"
+      badge: "Hardware & DSE"
     },
     {
       id: "xai-framework",
