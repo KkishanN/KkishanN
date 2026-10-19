@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PORTFOLIO_DATA, Project } from '../data/portfolioData';
-import { FolderGit2, Briefcase, Code2, Github, ExternalLink, Award, CheckCircle2 } from 'lucide-react';
+import { FolderGit2, Briefcase, Code2, Github, ExternalLink, Award, Layers, Sparkles } from 'lucide-react';
 
 export const ProjectsSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'all' | 'work' | 'personal'>('all');
@@ -8,91 +8,132 @@ export const ProjectsSection: React.FC = () => {
   const showWork = activeTab === 'all' || activeTab === 'work';
   const showPersonal = activeTab === 'all' || activeTab === 'personal';
 
-  const renderProjectCard = (proj: Project) => (
-    <div
-      key={proj.id}
-      className="p-5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 transition-all shadow-2xs hover:shadow-xs flex flex-col justify-between"
-    >
-      <div>
-        {/* Top Context & Timeline */}
-        <div className="flex items-center justify-between gap-2 mb-2">
-          <div className="flex items-center gap-1.5 flex-wrap">
-            <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
-              {proj.clientOrContext}
-            </span>
-            <span className={`px-2 py-0.5 rounded text-[10px] font-medium border ${
-              proj.projectType === 'work'
-                ? 'bg-blue-50 text-blue-700 border-blue-100'
-                : 'bg-emerald-50 text-emerald-700 border-emerald-100'
-            }`}>
-              {proj.badge}
-            </span>
-          </div>
-          <span className="text-xs text-slate-400 font-mono shrink-0">{proj.timeline}</span>
-        </div>
+  const renderProjectCard = (proj: Project) => {
+    const isAxCTask1 = proj.id === 'axc-task1';
 
-        {/* Title & Award */}
-        <div className="mb-2">
-          <h4 className="text-base font-bold text-slate-900 leading-snug">
-            {proj.title}
-          </h4>
-          {proj.role && (
-            <p className="text-xs text-blue-600 font-medium mt-0.5">{proj.role}</p>
+    return (
+      <div
+        key={proj.id}
+        className={`p-5 rounded-xl bg-white border transition-all shadow-2xs hover:shadow-xs flex flex-col justify-between ${
+          isAxCTask1 
+            ? 'border-blue-200 md:col-span-2 bg-gradient-to-br from-white to-blue-50/20' 
+            : 'border-slate-200 hover:border-slate-300'
+        }`}
+      >
+        <div>
+          {/* Top Context & Timeline */}
+          <div className="flex items-center justify-between gap-2 mb-2">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
+                {proj.clientOrContext}
+              </span>
+              <span className={`px-2 py-0.5 rounded text-[10px] font-medium border ${
+                proj.projectType === 'work'
+                  ? 'bg-blue-50 text-blue-700 border-blue-100'
+                  : 'bg-emerald-50 text-emerald-700 border-emerald-100'
+              }`}>
+                {proj.badge}
+              </span>
+            </div>
+            <span className="text-xs text-slate-400 font-mono shrink-0">{proj.timeline}</span>
+          </div>
+
+          {/* Title & Award */}
+          <div className="mb-2">
+            <h4 className="text-base font-bold text-slate-900 leading-snug">
+              {proj.title}
+            </h4>
+            {proj.role && (
+              <p className="text-xs text-blue-600 font-medium mt-0.5">{proj.role}</p>
+            )}
+          </div>
+
+          {proj.award && (
+            <div className="mb-3 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 text-xs font-semibold">
+              <Award className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+              <span>{proj.award}</span>
+            </div>
+          )}
+
+          {/* Description */}
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+            {proj.description}
+          </p>
+
+          {/* Extended Details Box for AxC Task 1 */}
+          {proj.extendedDetails && (
+            <div className="my-3 p-3.5 rounded-lg bg-slate-50 border border-slate-200 text-xs space-y-2.5">
+              <div>
+                <span className="font-bold text-slate-800 uppercase tracking-wider text-[10px] block mb-0.5">
+                  The Bottleneck Analyzed:
+                </span>
+                <p className="text-slate-600 leading-relaxed text-[11px]">
+                  {proj.extendedDetails.problem}
+                </p>
+              </div>
+
+              <div>
+                <span className="font-bold text-slate-800 uppercase tracking-wider text-[10px] block mb-1">
+                  Three Composable Approximation Layers:
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  {proj.extendedDetails.layers.map((layer, lIdx) => (
+                    <div key={lIdx} className="p-2 rounded bg-white border border-slate-200">
+                      <p className="font-semibold text-blue-700 text-[11px] mb-0.5">{layer.name}</p>
+                      <p className="text-slate-600 text-[10px] leading-snug">{layer.detail}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-1.5 border-t border-slate-200 text-[11px] text-slate-700 flex items-center gap-1.5">
+                <span className="font-bold text-emerald-700">Target Impact:</span>
+                <span>{proj.extendedDetails.impact}</span>
+              </div>
+            </div>
+          )}
+
+          {/* Key Highlights */}
+          {proj.highlights && proj.highlights.length > 0 && (
+            <ul className="space-y-1 mb-4 text-xs text-slate-600">
+              {proj.highlights.map((h, hIdx) => (
+                <li key={hIdx} className="flex items-start gap-1.5">
+                  <span className="text-blue-500 font-bold mt-0.5">›</span>
+                  <span className="leading-relaxed">{h}</span>
+                </li>
+              ))}
+            </ul>
           )}
         </div>
 
-        {proj.award && (
-          <div className="mb-3 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 text-xs font-semibold">
-            <Award className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-            <span>{proj.award}</span>
-          </div>
-        )}
-
-        {/* Description */}
-        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
-          {proj.description}
-        </p>
-
-        {/* Key Highlights */}
-        {proj.highlights && proj.highlights.length > 0 && (
-          <ul className="space-y-1 mb-4 text-xs text-slate-600">
-            {proj.highlights.map((h, hIdx) => (
-              <li key={hIdx} className="flex items-start gap-1.5">
-                <span className="text-blue-500 font-bold mt-0.5">›</span>
-                <span className="leading-relaxed">{h}</span>
-              </li>
+        {/* Footer: Tech Stack + Links */}
+        <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
+          <div className="flex flex-wrap gap-1">
+            {proj.technologies.map((tech, tIdx) => (
+              <span
+                key={tIdx}
+                className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-mono"
+              >
+                {tech}
+              </span>
             ))}
-          </ul>
-        )}
-      </div>
+          </div>
 
-      {/* Footer: Tech Stack + Links */}
-      <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
-        <div className="flex flex-wrap gap-1">
-          {proj.technologies.map((tech, tIdx) => (
-            <span
-              key={tIdx}
-              className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-mono"
+          {proj.github && (
+            <a
+              href={proj.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium transition-colors shrink-0 shadow-2xs"
             >
-              {tech}
-            </span>
-          ))}
+              <Github className="w-3.5 h-3.5" />
+              <span>View Code</span>
+            </a>
+          )}
         </div>
-
-        {proj.github && (
-          <a
-            href={proj.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium transition-colors shrink-0 shadow-2xs"
-          >
-            <Github className="w-3.5 h-3.5" />
-            <span>View Code</span>
-          </a>
-        )}
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <section id="projects" className="py-12 border-b border-slate-200 bg-slate-50/50">
@@ -107,7 +148,7 @@ export const ProjectsSection: React.FC = () => {
                 Featured Projects
               </h2>
               <p className="text-xs text-slate-500 mt-0.5">
-                Segregated by enterprise client work and personal open-source projects
+                Enterprise client work at Accenture & graduate systems research in Approximate Computing
               </p>
             </div>
           </div>
@@ -144,7 +185,7 @@ export const ProjectsSection: React.FC = () => {
               }`}
             >
               <Code2 className="w-3 h-3" />
-              <span>Personal ({PORTFOLIO_DATA.personalProjects.length})</span>
+              <span>Research & Academic ({PORTFOLIO_DATA.personalProjects.length})</span>
             </button>
           </div>
         </div>
@@ -166,14 +207,14 @@ export const ProjectsSection: React.FC = () => {
           </div>
         )}
 
-        {/* 2. Personal & Open-Source Projects Subsection */}
+        {/* 2. Personal & Academic Research Subsection */}
         {showPersonal && (
           <div>
             {activeTab === 'all' && (
               <div className="flex items-center gap-2 mb-4 pb-2 border-b border-slate-200">
                 <Code2 className="w-4 h-4 text-emerald-600" />
                 <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider">
-                  Personal & Academic Projects (GitHub)
+                  Graduate Research & Academic Systems (Uni Paderborn)
                 </h3>
               </div>
             )}

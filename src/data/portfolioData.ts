@@ -11,6 +11,11 @@ export interface Project {
   github?: string;
   award?: string;
   badge: string;
+  extendedDetails?: {
+    problem: string;
+    layers: { name: string; detail: string }[];
+    impact: string;
+  };
 }
 
 export interface Experience {
@@ -26,7 +31,7 @@ export const PORTFOLIO_DATA = {
   personal: {
     name: "Kishan Nadageri",
     title: "Software Engineer",
-    headline: "Full Stack Software Engineer with 3.5+ years of enterprise experience in .NET, Microsoft Azure Cloud, and Distributed Real-Time Systems, complemented by graduate work in Explainable AI, Sensor Fusion, and Full-Stack Engineering.",
+    headline: "Full Stack Software Engineer with 3.5+ years of enterprise experience in .NET, Microsoft Azure Cloud, and Distributed Real-Time Systems, complemented by graduate research in Approximate Computing (AxC) and Explainable AI.",
     email: "kishannadageri06@gmail.com",
     phone: "+91-8904526667",
     location: "India",
@@ -138,8 +143,35 @@ export const PORTFOLIO_DATA = {
     }
   ] as Project[],
 
-  // Refined Personal, Academic & System Engineering Projects
+  // Refined Personal & Academic Projects (XAI + AxC Task 1 Deep Dive + AxC Hardware Reducer)
   personalProjects: [
+    {
+      id: "axc-task1",
+      title: "Approximate Interaction Computing (AxC Task 1)",
+      projectType: "personal",
+      clientOrContext: "Universität Paderborn • Approximate Computing (AxC)",
+      role: "Graduate Systems Researcher",
+      timeline: "2026",
+      description: "Accuracy-tunable memory and reduction layers for graph-rewriting runtimes (Interaction Calculus / HVM2 / Bend). Resolves GPU memory-latency bottlenecks by treating computation error as a schedulable resource across three composable approximation layers.",
+      highlights: [
+        "Identified key GPU bottleneck on RTX 4090: tree-reduction workloads are 84% memory-latency bound with stack spill traffic ~18× heap traffic and low 16.67% warp occupancy.",
+        "Layer A1 (Approximate Liveness): Replaced exact variable tracking with probabilistic sketches and a novel 'resurrection operator', ensuring bounded error P(divergence) ≤ ε with safe sub-net re-evaluation.",
+        "Layer A2 (Precision-Scaled Encodings): Lossy numeric leaf tags with interval arithmetic envelopes [lo, hi] and hash-approximate DUP-SUP label equality to eliminate rewrite cascades.",
+        "Layer A3 (Tolerance-Based Memoization): Structural fingerprinting of sub-nets modulo labels/erasures to reuse evaluated normal forms within constructor distance tolerance τ.",
+        "Targeted Improvements: Drastically curbed memory spills on bitonic sort trees, targeted lifting GPU occupancy toward 30%+, and produced an energy/accuracy Pareto frontier."
+      ],
+      technologies: ["C", "CUDA", "Approximate Computing", "GPU Architecture", "Graph Rewriting", "Interaction Nets", "NVML"],
+      badge: "AxC Research Task 1",
+      extendedDetails: {
+        problem: "Massively parallel graph reduction on GPUs is 84% memory-latency bound with low warp occupancy (16.67%) and excessive stack spills (18× heap traffic).",
+        layers: [
+          { name: "Layer A1: Approximate Liveness", detail: "Probabilistic sketches over variable scopes + resurrection operator for bounded re-evaluation." },
+          { name: "Layer A2: Precision Scaling", detail: "Interval-based numeric payloads and hash-approximate label matching to shrink node memory footprint." },
+          { name: "Layer A3: Rewrite Memoization", detail: "Structural sub-net caching within constructor distance tolerance τ to bypass redundant reductions." }
+        ],
+        impact: "Cuts memory traffic, targets doubling GPU warp occupancy, and establishes an accuracy/energy Pareto frontier for symbolic computing."
+      }
+    },
     {
       id: "xai-framework",
       title: "Explainable AI (XAI) & Interpretable ML",
@@ -157,34 +189,20 @@ export const PORTFOLIO_DATA = {
       badge: "Graduate Project"
     },
     {
-      id: "gps-denied-drone",
-      title: "GPS-Denied Autonomous Drone Navigation",
+      id: "axc-task2",
+      title: "Spatial Hardware Reducer on Reconfigurable Fabric (AxC Task 2)",
       projectType: "personal",
-      clientOrContext: "Robotics & Embedded Systems",
-      role: "Simulation & Algorithms Developer",
+      clientOrContext: "Universität Paderborn • Computer Architecture",
+      role: "Hardware Architecture & Design",
       timeline: "2026",
-      description: "Autonomous quadcopter guidance and state estimation system operating in GPS-denied environments. Uses pure mathematics and 6-DOF IMU sensor fusion to estimate orientation and execute waypoint navigation.",
+      description: "Hardware reducer architecture for interaction nets mapped onto FPGA reconfigurable fabric. Implements graph-rewriting rules as parallel hardware blocks with on-chip BRAM net memory, eliminating von Neumann fetch/decode overheads.",
       highlights: [
-        "Designed Complementary Filter fusing 3-axis accelerometer and gyroscope readings to suppress sensor drift and estimate 3D attitude (Roll, Pitch, Yaw).",
-        "Applied 3D rotation matrices to project body accelerations into the world coordinate frame and compute vector guidance in Webots 3D simulation."
+        "Exploited the natural locality of interaction nets: every rewrite touches only connected nodes and edges with zero global scheduling conflicts.",
+        "Modeled packed 32-bit IC node memory directly in on-chip Block RAM (BRAM) using message-passing reduction logic.",
+        "Evaluated spatial hardware throughput (interactions per second) and energy efficiency against CPU and GPU baselines."
       ],
-      technologies: ["Python", "State Estimation", "IMU Sensor Fusion", "Webots 3D", "Vector Guidance", "Kinematics"],
-      badge: "Robotics & Math"
-    },
-    {
-      id: "adhd-life-manager",
-      title: "ADHD Life Manager — Focus & Behavioral Health App",
-      projectType: "personal",
-      clientOrContext: "Full-Stack Web Application",
-      role: "Full Stack Developer",
-      timeline: "2026",
-      description: "Evidence-based productivity and behavioral health web application designed to support executive functioning through focus timers, prioritized task triage, and CBT-adapted habit tracking.",
-      highlights: [
-        "Architected an Express REST API with persistent JSON state management and multi-metric daily check-ins.",
-        "Built responsive client interface featuring Pomodoro focus tracking, priority task decomposition, and streak pattern analytics."
-      ],
-      technologies: ["JavaScript", "Node.js", "Express.js", "REST APIs", "State Management", "CSS3"],
-      badge: "Full-Stack App"
+      technologies: ["C++", "Verilog/VHDL", "FPGA BRAM", "Hardware Synthesis", "Spatial Computing", "Interaction Calculus"],
+      badge: "AxC Research Task 2"
     }
   ] as Project[],
 
@@ -206,8 +224,8 @@ export const PORTFOLIO_DATA = {
       skills: ["Redis Distributed Cache", "SignalR (WebSockets)", "Microsoft SQL Server", "Cosmos DB / NoSQL", "Event-Driven Pub/Sub"]
     },
     {
-      title: "AI, Tools & Methods",
-      skills: ["Explainable AI (XAI)", "PyTorch", "ReactJS", "Git & GitHub", "CI/CD", "Agile / Scrum"]
+      title: "Research & Systems Tools",
+      skills: ["Approximate Computing (AxC)", "Explainable AI (XAI)", "PyTorch", "CUDA & GPU Architecture", "Git & GitHub", "CI/CD"]
     }
   ],
 
@@ -217,7 +235,7 @@ export const PORTFOLIO_DATA = {
       institution: "Universität Paderborn",
       location: "Paderborn, Germany",
       period: "04/2024 – Present",
-      note: "Focusing on distributed systems, software architecture, and explainable machine learning."
+      note: "Focusing on Approximate Computing (AxC), Distributed Systems, High-Performance Architecture, and Explainable AI."
     },
     {
       degree: "Bachelor of Engineering in Information Science",
