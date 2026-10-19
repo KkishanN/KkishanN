@@ -31,7 +31,7 @@ export const PORTFOLIO_DATA = {
   personal: {
     name: "Kishan Nadageri",
     title: "Software Engineer",
-    headline: "Full Stack Software Engineer with 3.5+ years of enterprise experience in .NET, Microsoft Azure Cloud, and Distributed Real-Time Systems, complemented by graduate research in Approximate Computing (AxC) and Explainable AI.",
+    headline: "Full Stack Software Engineer with 3.5+ years of enterprise experience in .NET, Microsoft Azure Cloud, and Distributed Real-Time Systems, complemented by graduate research in Approximate Computing (AxC) and Symbolic Hardware Acceleration.",
     email: "kishannadageri06@gmail.com",
     phone: "+91-8904526667",
     location: "India",
@@ -143,25 +143,26 @@ export const PORTFOLIO_DATA = {
     }
   ] as Project[],
 
-  // Refined Personal & Academic Projects (XAI + AxC Task 1 Deep Dive + AxC Hardware Reducer)
+  // Refined Research & Open-Source Projects (With Actual Project Titles & GitHub Links)
   personalProjects: [
     {
-      id: "axc-task1",
-      title: "Approximate Interaction Computing (AxC Task 1)",
+      id: "approximate-interaction-computing",
+      title: "Approximate Interaction Computing",
       projectType: "personal",
       clientOrContext: "Universität Paderborn • Approximate Computing (AxC)",
       role: "Graduate Systems Researcher",
       timeline: "2026",
       description: "Accuracy-tunable memory and reduction layers for graph-rewriting runtimes (Interaction Calculus / HVM2 / Bend). Resolves GPU memory-latency bottlenecks by treating computation error as a schedulable resource across three composable approximation layers.",
       highlights: [
-        "Identified key GPU bottleneck on RTX 4090: tree-reduction workloads are 84% memory-latency bound with stack spill traffic ~18× heap traffic and low 16.67% warp occupancy.",
+        "Identified GPU bottleneck on RTX 4090: tree-reduction workloads are 84% memory-latency bound with stack spill traffic ~18× heap traffic and low 16.67% warp occupancy.",
         "Layer A1 (Approximate Liveness): Replaced exact variable tracking with probabilistic sketches and a novel 'resurrection operator', ensuring bounded error P(divergence) ≤ ε with safe sub-net re-evaluation.",
         "Layer A2 (Precision-Scaled Encodings): Lossy numeric leaf tags with interval arithmetic envelopes [lo, hi] and hash-approximate DUP-SUP label equality to eliminate rewrite cascades.",
         "Layer A3 (Tolerance-Based Memoization): Structural fingerprinting of sub-nets modulo labels/erasures to reuse evaluated normal forms within constructor distance tolerance τ.",
         "Targeted Improvements: Drastically curbed memory spills on bitonic sort trees, targeted lifting GPU occupancy toward 30%+, and produced an energy/accuracy Pareto frontier."
       ],
       technologies: ["C", "CUDA", "Approximate Computing", "GPU Architecture", "Graph Rewriting", "Interaction Nets", "NVML"],
-      badge: "AxC Research Task 1",
+      github: "https://github.com/KkishanN/approximate-interaction-computing",
+      badge: "Systems Research",
       extendedDetails: {
         problem: "Massively parallel graph reduction on GPUs is 84% memory-latency bound with low warp occupancy (16.67%) and excessive stack spills (18× heap traffic).",
         layers: [
@@ -171,6 +172,23 @@ export const PORTFOLIO_DATA = {
         ],
         impact: "Cuts memory traffic, targets doubling GPU warp occupancy, and establishes an accuracy/energy Pareto frontier for symbolic computing."
       }
+    },
+    {
+      id: "spatial-interaction-reducer",
+      title: "Silicon for Symbolic Computation: Spatial Interaction Reducer",
+      projectType: "personal",
+      clientOrContext: "Universität Paderborn • Computer Architecture",
+      role: "Hardware Architecture & Simulation",
+      timeline: "2026",
+      description: "Cycle-accurate hardware simulator and FPGA architecture for Interaction Calculus graph reduction. Maps interaction combinators directly into decentralized spatial rule blocks with interleaved on-chip BRAM memory.",
+      highlights: [
+        "Implemented cycle-accurate software simulator in C++ modeling 8 parallel spatial rule-blocks (APP-LAM, DUP-SUP, APP-SUP, DUP-LAM, ERA, NUM/SUC).",
+        "Engineered 8-bank interleaved on-chip BRAM memory system with conflict arbitration and free-list recycling for floating duplication nodes.",
+        "Achieved 80.01 MInt/s throughput at 250 MHz clock on Depth-14 bitonic reduction net, delivering 2.26× higher energy efficiency than CPU baselines (184.98 J/GInt vs 418 J/GInt)."
+      ],
+      technologies: ["C++17", "FPGA Architecture", "BRAM Banking", "Cycle-Accurate Sim", "Spatial Dataflow", "Interaction Nets"],
+      github: "https://github.com/KkishanN/spatial-interaction-reducer",
+      badge: "Hardware Simulator"
     },
     {
       id: "xai-framework",
@@ -186,23 +204,7 @@ export const PORTFOLIO_DATA = {
       ],
       technologies: ["Python", "PyTorch", "Graph Neural Networks", "Feature Engineering", "XAI"],
       github: "https://github.com/KkishanN/XAI_prj",
-      badge: "Graduate Project"
-    },
-    {
-      id: "axc-task2",
-      title: "Spatial Hardware Reducer on Reconfigurable Fabric (AxC Task 2)",
-      projectType: "personal",
-      clientOrContext: "Universität Paderborn • Computer Architecture",
-      role: "Hardware Architecture & Design",
-      timeline: "2026",
-      description: "Hardware reducer architecture for interaction nets mapped onto FPGA reconfigurable fabric. Implements graph-rewriting rules as parallel hardware blocks with on-chip BRAM net memory, eliminating von Neumann fetch/decode overheads.",
-      highlights: [
-        "Exploited the natural locality of interaction nets: every rewrite touches only connected nodes and edges with zero global scheduling conflicts.",
-        "Modeled packed 32-bit IC node memory directly in on-chip Block RAM (BRAM) using message-passing reduction logic.",
-        "Evaluated spatial hardware throughput (interactions per second) and energy efficiency against CPU and GPU baselines."
-      ],
-      technologies: ["C++", "Verilog/VHDL", "FPGA BRAM", "Hardware Synthesis", "Spatial Computing", "Interaction Calculus"],
-      badge: "AxC Research Task 2"
+      badge: "Graduate Coursework"
     }
   ] as Project[],
 

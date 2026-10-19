@@ -9,13 +9,13 @@ export const ProjectsSection: React.FC = () => {
   const showPersonal = activeTab === 'all' || activeTab === 'personal';
 
   const renderProjectCard = (proj: Project) => {
-    const isAxCTask1 = proj.id === 'axc-task1';
+    const isFeaturedResearch = proj.id === 'approximate-interaction-computing';
 
     return (
       <div
         key={proj.id}
         className={`p-5 rounded-xl bg-white border transition-all shadow-2xs hover:shadow-xs flex flex-col justify-between ${
-          isAxCTask1 
+          isFeaturedResearch 
             ? 'border-blue-200 md:col-span-2 bg-gradient-to-br from-white to-blue-50/20' 
             : 'border-slate-200 hover:border-slate-300'
         }`}
