@@ -161,7 +161,7 @@ export const PORTFOLIO_DATA = {
         "Targeted Improvements: Drastically curbed memory spills on bitonic sort trees, targeted lifting GPU occupancy toward 30%+, and produced an energy/accuracy Pareto frontier."
       ],
       technologies: ["C", "CUDA", "Approximate Computing", "GPU Architecture", "Graph Rewriting", "Interaction Nets", "NVML"],
-      github: "https://github.com/KkishanN/approximate-interaction-computing",
+      github: "https://github.com/KkishanN/AxC",
       badge: "Systems Research",
       extendedDetails: {
         problem: "Massively parallel graph reduction on GPUs is 84% memory-latency bound with low warp occupancy (16.67%) and excessive stack spills (18× heap traffic).",
@@ -187,7 +187,7 @@ export const PORTFOLIO_DATA = {
         "Achieved 80.01 MInt/s throughput at 250 MHz clock on Depth-14 bitonic reduction net, delivering 2.26× higher energy efficiency than CPU baselines (184.98 J/GInt vs 418 J/GInt)."
       ],
       technologies: ["C++17", "FPGA Architecture", "BRAM Banking", "Cycle-Accurate Sim", "Spatial Dataflow", "Interaction Nets"],
-      github: "https://github.com/KkishanN/spatial-interaction-reducer",
+      github: "https://github.com/KkishanN/AxC",
       badge: "Hardware Simulator"
     },
     {
