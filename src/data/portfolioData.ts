@@ -227,7 +227,7 @@ export const PORTFOLIO_DATA = {
     },
     {
       title: "Research & Systems Tools",
-      skills: ["Approximate Computing (AxC)", "Explainable AI (XAI)", "PyTorch", "CUDA & GPU Architecture", "Git & GitHub", "CI/CD"]
+      skills: ["Approximate Computing (AxC)", "Explainable AI (XAI)", "PyTorch", "CUDA & GPU Architecture", "CI/CD"]
     }
   ],
 
