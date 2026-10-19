@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
           © {new Date().getFullYear()} {PORTFOLIO_DATA.personal.name}. All rights reserved.
         </p>
         <p className="text-slate-400">
-          Built with React & Tailwind CSS • Paderborn, Germany
+          Built with React & Tailwind CSS • {PORTFOLIO_DATA.personal.location}
         </p>
       </div>
     </footer>

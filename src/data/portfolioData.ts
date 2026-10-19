@@ -1,13 +1,16 @@
 export interface Project {
+  id: string;
   title: string;
-  category: string;
+  projectType: 'work' | 'personal';
+  clientOrContext: string;
+  role?: string;
   timeline: string;
   description: string;
+  highlights: string[];
   technologies: string[];
-  link?: string;
   github?: string;
   award?: string;
-  badge?: string;
+  badge: string;
 }
 
 export interface Experience {
@@ -22,21 +25,21 @@ export interface Experience {
 export const PORTFOLIO_DATA = {
   personal: {
     name: "Kishan Nadageri",
-    title: "Software Engineer & Master's Student",
-    headline: "Full Stack Software Engineer with 3.5+ years of enterprise experience in .NET, Azure Cloud, and Distributed Systems, currently pursuing a Master's in Computer Engineering at Universität Paderborn.",
+    title: "Software Engineer",
+    headline: "Full Stack Software Engineer with 3.5+ years of enterprise experience in .NET, Microsoft Azure Cloud, and Distributed Real-Time Systems, complemented by academic projects in Explainable AI and PyTorch.",
     email: "kishannadageri06@gmail.com",
-    phone: "+49 015510608612",
-    location: "Paderborn, Germany",
+    phone: "+91-8904526667",
+    location: "India",
     github: "https://github.com/KkishanN",
     linkedin: "https://linkedin.com/in/kishan-nadageri",
     resumeUrl: "/kishan_nadageri_resume.pdf",
-    status: "Open to Full-Time / Working Student Roles",
+    status: "Open to Software Engineering Opportunities",
   },
 
   highlights: [
     { label: "Experience", value: "3.5+ Yrs", detail: "Enterprise scale at Accenture" },
-    { label: "Education", value: "M.Sc. Student", detail: "Computer Engineering, Uni Paderborn" },
-    { label: "Honors", value: "2x ACE Awards", detail: "Accenture technical delivery excellence" },
+    { label: "Education", value: "M.Sc. Candidate", detail: "Computer Engineering, Uni Paderborn" },
+    { label: "Recognition", value: "2x ACE Awards", detail: "Delivery & technical excellence" },
     { label: "Certifications", value: "3x Microsoft", detail: "AZ-900, MS-900, PL-900" }
   ],
 
@@ -50,7 +53,7 @@ export const PORTFOLIO_DATA = {
         "Spearheaded backend architecture and cloud integration for enterprise solutions with .NET Core and Microsoft Azure.",
         "Engineered serverless processing pipelines using Azure Functions for multi-modal audio/video translation and Teams notifications.",
         "Guided front-end teams on React UI integrations, conducted code reviews, and mentored 3 junior developers to uphold code quality.",
-        "Won the Accenture ACE Award (06/2023) for delivery excellence on the Microsoft Viva Oracle Connector."
+        "Awarded the Accenture ACE Award (06/2023) for delivery excellence on the Microsoft Viva Oracle Connector."
       ],
       technologies: ["C#", ".NET Core", "Microsoft Azure", "Azure Functions", "ReactJS", "REST APIs", "CI/CD"]
     },
@@ -63,64 +66,127 @@ export const PORTFOLIO_DATA = {
         "Developed and maintained high-throughput backend APIs for real-time meeting management and telehealth notification queues.",
         "Achieved sub-10ms state synchronization using Redis Distributed Cache and SignalR WebSockets for virtual visits.",
         "Streamed high-volume telemetry and participant data using Azure Event Hubs and Cosmos DB Change Feed triggers.",
-        "Won the Accenture ACE Award (01/2023) for full-stack contributions to the CIBC @Home application."
+        "Awarded the Accenture ACE Award (01/2023) for full-stack contributions to the CIBC @Home application."
       ],
       technologies: ["C#", "ASP.NET Core", "Redis Cache", "SignalR", "Azure Event Hubs", "Cosmos DB", "SQL Server"]
     }
   ] as Experience[],
 
-  projects: [
+  // Segregated Work & Enterprise Projects
+  workProjects: [
     {
-      title: "Explainable AI (XAI) & Interpretable ML",
-      category: "AI & Research Coursework",
-      timeline: "2025 – Present",
-      description: "Interpretable machine learning framework built as part of coursework at Universität Paderborn. Explores feature attribution, model interpretability, and graph convolutions (SGC) to evaluate neural network decision boundaries.",
-      technologies: ["Python", "PyTorch", "Graph Neural Networks", "Feature Engineering", "XAI"],
-      github: "https://github.com/KkishanN/XAI_prj",
-      badge: "Uni Paderborn"
-    },
-    {
-      title: "Azure Brokered Messaging Architecture",
-      category: "Cloud & Messaging",
-      timeline: "Open Source",
-      description: "Production-ready messaging patterns leveraging Azure Service Bus (Queues and Topics). Implements reliable asynchronous publishers, consumers, and a brokered console chat application in C#.",
-      technologies: ["C#", ".NET", "Azure Service Bus", "Message Queues", "Pub/Sub"],
-      github: "https://github.com/KkishanN/AzureServices-Basics-Csharp",
-      badge: "GitHub Repo"
-    },
-    {
+      id: "copilot-transcription",
       title: "Microsoft Copilot Transcription & Translation",
-      category: "Enterprise AI & Cloud",
+      projectType: "work",
+      clientOrContext: "Accenture Enterprise Project",
+      role: "Backend & Cloud Engineer",
       timeline: "11/2023 – 02/2024",
       description: "Event-driven serverless pipeline integrating media processing with Azure Cognitive Speech and Neural Translation, delivering automated post-meeting transcript summaries to Microsoft Teams channels.",
-      technologies: [".NET", "Azure Functions", "Cognitive Services", "Blob Storage", "Teams API"],
-      badge: "Accenture Client"
+      highlights: [
+        "Architected serverless Azure Function Apps to ingest high-volume media files asynchronously with automated retry policies.",
+        "Eliminated manual transcription bottlenecks through automated webhooks and Adaptive Card generation in Teams."
+      ],
+      technologies: [".NET", "C#", "Azure Functions", "Cognitive Services", "Blob Storage", "Teams API"],
+      badge: "Enterprise Production"
     },
     {
-      title: "Telehealth Real-Time Consultation Engine",
-      category: "Distributed Systems",
+      id: "telehealth-visits",
+      title: "Telehealth Real-Time Clinical Visits",
+      projectType: "work",
+      clientOrContext: "Accenture Healthcare Client",
+      role: "Full Stack Engineer",
       timeline: "07/2021 – 03/2022",
-      description: "Low-latency clinical visit platform providing sub-10ms room state synchronization across thousands of concurrent consultation rooms using Redis Distributed Cache, SignalR, and Event Hubs.",
-      technologies: [".NET 6", "Redis Cache", "SignalR", "Azure Event Hubs", "Cosmos DB"],
-      badge: "Accenture Client"
+      description: "Low-latency clinical consultation platform providing sub-10ms room state synchronization across thousands of concurrent consultation rooms using Redis Distributed Cache, SignalR, and Event Hubs.",
+      highlights: [
+        "Built bidirectional WebSocket channels with SignalR and Redis Backplane to maintain active room state with sub-10ms latency.",
+        "Ingested real-time meeting telemetry and connection logs into Azure Event Hubs for operational auditing."
+      ],
+      technologies: [".NET 6", "C#", "Redis Cache", "SignalR", "Azure Event Hubs", "Cosmos DB"],
+      badge: "Real-Time Systems"
     },
     {
+      id: "viva-oracle",
       title: "Microsoft Viva Oracle Data Connector",
-      category: "Enterprise Integration",
+      projectType: "work",
+      clientOrContext: "Accenture Enterprise Client",
+      role: "Module Lead & Backend Engineer",
       timeline: "06/2023",
       description: "Fault-tolerant data bridge syncing on-premise Oracle DB with Microsoft Viva Learning and Moodle LMS, utilizing Polly circuit breaker patterns for uninterrupted data consistency.",
-      technologies: [".NET Core", "Oracle DB", "Microsoft Viva", "Polly Resilience", "REST"],
-      award: "ACE Award Winner",
-      badge: "Accenture Client"
+      highlights: [
+        "Designed resilient ETL sync queues handling complex enterprise data mapping and schema synchronization.",
+        "Mentored and guided 3 junior developers through backend implementation, unit testing, and production deployment."
+      ],
+      technologies: [".NET Core", "C#", "Oracle DB", "Microsoft Viva", "Polly Resilience", "REST"],
+      award: "ACE Award Winner (06/2023)",
+      badge: "ACE Award Winner"
     },
     {
+      id: "cibc-athome",
+      title: "CIBC @Home Banking Applications",
+      projectType: "work",
+      clientOrContext: "Accenture Financial Services Client",
+      role: "Full Stack Engineer",
+      timeline: "01/2023",
+      description: "Financial services platform powering secure remote banking workflows with stringent security, auditability, and modern React frontend responsiveness.",
+      highlights: [
+        "Developed secure .NET backend microservices adhering to strict financial compliance and encryption standards.",
+        "Optimized SQL Server stored procedures and query execution plans for sub-second report generation."
+      ],
+      technologies: [".NET Core", "ReactJS", "SQL Server", "Azure AD", "OAuth2", "C#"],
+      award: "ACE Award Winner (01/2023)",
+      badge: "ACE Award Winner"
+    }
+  ] as Project[],
+
+  // Segregated Personal & Open-Source Projects (GitHub)
+  personalProjects: [
+    {
+      id: "xai-framework",
+      title: "Explainable AI (XAI) & Interpretable ML",
+      projectType: "personal",
+      clientOrContext: "Universität Paderborn Coursework",
+      role: "Graduate Researcher & Developer",
+      timeline: "2025 – Present",
+      description: "Interpretable machine learning framework developed at Universität Paderborn. Explores feature attribution, model interpretability, and graph convolutions (SGC) to evaluate neural network decision boundaries.",
+      highlights: [
+        "Implemented graph neural network baseline (Simple Graph Convolution) and feature engineering pipelines in PyTorch.",
+        "Evaluated model explanation fidelity using attribution metrics and interpretable ML visualizations."
+      ],
+      technologies: ["Python", "PyTorch", "Graph Neural Networks", "Feature Engineering", "XAI"],
+      github: "https://github.com/KkishanN/XAI_prj",
+      badge: "Graduate Project"
+    },
+    {
+      id: "azure-messaging",
+      title: "Azure Brokered Messaging Architecture",
+      projectType: "personal",
+      clientOrContext: "Open Source / GitHub",
+      role: "Personal Project",
+      timeline: "Open Source",
+      description: "Production-ready messaging patterns leveraging Azure Service Bus (Queues and Topics). Implements reliable asynchronous publishers, consumers, and a brokered console chat application in C#.",
+      highlights: [
+        "Implemented publisher/subscriber messaging with topic filtering, dead-letter queues, and message batching.",
+        "Built a multi-user brokered console chat application verifying real-time queue delivery guarantees."
+      ],
+      technologies: ["C#", ".NET", "Azure Service Bus", "Message Queues", "Pub/Sub"],
+      github: "https://github.com/KkishanN/AzureServices-Basics-Csharp",
+      badge: "Open Source"
+    },
+    {
+      id: "tensortonic-dl",
       title: "TensorTonic Deep Learning Implementations",
-      category: "Algorithms & ML",
+      projectType: "personal",
+      clientOrContext: "Open Source / GitHub",
+      role: "Personal Project",
       timeline: "2026",
       description: "Algorithmic implementations of tensor transformations, autograd routines, and fundamental deep learning mechanics implemented from first principles in Python.",
+      highlights: [
+        "Authored mathematical routines for matrix factorizations, backpropagation derivatives, and layer activations.",
+        "Benchmarked tensor transformation speed and numerical stability across optimization routines."
+      ],
       technologies: ["Python", "PyTorch", "Linear Algebra", "Algorithms"],
       github: "https://github.com/KkishanN/TensorTonic-Solutions",
-      badge: "GitHub Repo"
+      badge: "Algorithms & ML"
     }
   ] as Project[],
 
@@ -153,7 +219,7 @@ export const PORTFOLIO_DATA = {
       institution: "Universität Paderborn",
       location: "Paderborn, Germany",
       period: "04/2024 – Present",
-      note: "Focusing on distributed systems, advanced software engineering, and machine learning."
+      note: "Focusing on distributed systems, software architecture, and explainable machine learning."
     },
     {
       degree: "Bachelor of Engineering in Information Science",
