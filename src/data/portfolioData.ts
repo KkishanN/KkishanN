@@ -34,6 +34,7 @@ export const PORTFOLIO_DATA = {
     linkedin: "https://linkedin.com/in/kishan-nadageri",
     resumeUrl: "/kishan_nadageri_resume.pdf",
     status: "Open to Software Engineering Opportunities",
+    avatar: "/kishan.jpg",
   },
 
   highlights: [

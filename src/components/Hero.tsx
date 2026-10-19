@@ -18,17 +18,34 @@ export const Hero: React.FC = () => {
           </span>
         </div>
 
-        {/* Main Headline */}
-        <div className="space-y-3 max-w-3xl">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Hi, I'm {PORTFOLIO_DATA.personal.name}.
-          </h1>
-          <p className="text-lg sm:text-xl font-medium text-blue-600">
-            {PORTFOLIO_DATA.personal.title}
-          </p>
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-            {PORTFOLIO_DATA.personal.headline}
-          </p>
+        {/* Main Headline & Profile Photo */}
+        <div className="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-6 max-w-4xl">
+          <div className="space-y-3 max-w-2xl">
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Hi, I'm {PORTFOLIO_DATA.personal.name}.
+            </h1>
+            <p className="text-lg sm:text-xl font-medium text-blue-600">
+              {PORTFOLIO_DATA.personal.title}
+            </p>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+              {PORTFOLIO_DATA.personal.headline}
+            </p>
+          </div>
+
+          {/* Profile Picture */}
+          <div className="shrink-0 self-start sm:self-center">
+            <div className="relative inline-block">
+              <img
+                src={PORTFOLIO_DATA.personal.avatar}
+                alt={PORTFOLIO_DATA.personal.name}
+                className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover ring-2 ring-slate-200 shadow-sm"
+              />
+              <span
+                className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 ring-2 ring-white"
+                title="Available for opportunities"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Action Buttons */}
