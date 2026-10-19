@@ -32,9 +32,9 @@ export const PORTFOLIO_DATA = {
     location: "India",
     github: "https://github.com/KkishanN",
     linkedin: "https://linkedin.com/in/kishan-nadageri",
-    resumeUrl: "/kishan_nadageri_resume.pdf",
+    resumeUrl: "./kishan_nadageri_resume.pdf",
     status: "Open to Software Engineering Opportunities",
-    avatar: "/kishan.jpg",
+    avatar: "./kishan.jpg",
   },
 
   highlights: [
