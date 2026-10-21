@@ -65,7 +65,7 @@ export const PORTFOLIO_DATA = {
       period: "10/2020 – 02/2022",
       highlights: [
         "Developed and maintained high-throughput backend APIs for real-time meeting management and telehealth notification queues.",
-        "Achieved sub-10ms state synchronization using Redis Distributed Cache and SignalR WebSockets for virtual visits.",
+        "Implemented real-time state synchronization using Redis Distributed Cache and SignalR WebSockets for virtual clinical visits.",
         "Streamed high-volume telemetry and participant data using Azure Event Hubs and Cosmos DB Change Feed triggers.",
         "Awarded the Accenture ACE Award (01/2023) for full-stack contributions to the CIBC @Home application."
       ],
@@ -97,9 +97,9 @@ export const PORTFOLIO_DATA = {
       clientOrContext: "Accenture Healthcare Client",
       role: "Full Stack Engineer",
       timeline: "07/2021 – 03/2022",
-      description: "Low-latency clinical consultation platform providing sub-10ms room state synchronization across thousands of concurrent consultation rooms using Redis Distributed Cache, SignalR, and Event Hubs.",
+      description: "Real-time clinical consultation platform providing synchronized room state across concurrent consultation rooms using Redis Distributed Cache, SignalR, and Event Hubs.",
       highlights: [
-        "Built bidirectional WebSocket channels with SignalR and Redis Backplane to maintain active room state with sub-10ms latency.",
+        "Built bidirectional WebSocket channels with SignalR and Redis Backplane to maintain active room state and live session updates.",
         "Ingested real-time meeting telemetry and connection logs into Azure Event Hubs for operational auditing."
       ],
       technologies: [".NET 6", "C#", "Redis Cache", "SignalR", "Azure Event Hubs", "Cosmos DB"],
