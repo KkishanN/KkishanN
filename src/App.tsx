@@ -8,9 +8,9 @@ import { EducationAndCerts } from './components/EducationAndCerts';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 
-export const App: React.FC = () => {
+const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
+    <div className="min-h-screen bg-white text-slate-800 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
       <Navbar />
       <main className="flex-1">
         <Hero />

@@ -26,10 +26,11 @@ export const PORTFOLIO_DATA = {
   personal: {
     name: "Kishan Nadageri",
     title: "Full Stack Software Engineer",
-    headline: "Experienced Full Stack Engineer with over 3.5 years of expertise in architecting, developing, and deploying robust .NET solutions across the Microsoft Azure platform. Proven track record in leading backend development, optimizing cloud applications, and delivering high-impact enterprise projects at Accenture. Adept at collaborating with cross-functional teams to ensure seamless system integration, high reliability, and project success.",
+    headline: "Experienced Full Stack Engineer with 3+ years of expertise in architecting, developing, and deploying robust .NET solutions across the Microsoft Azure platform. Proven track record in leading backend development, optimizing cloud applications, and delivering high-impact enterprise projects at Accenture.",
     email: "kishannadageri06@gmail.com",
-    phone: "+91-8904526667",
-    location: "India",
+    // Encoded to prevent automated web crawlers from scraping phone directly
+    phone: typeof atob !== "undefined" ? atob("KzkxLTg5MDQ1MjY2Njc=") : "+91-8904526667",
+    location: "Paderborn, Germany",
     github: "https://github.com/KkishanN",
     linkedin: "https://linkedin.com/in/kishan-nadageri",
     resumeUrl: "./kishan_nadageri_resume.pdf",
@@ -38,7 +39,7 @@ export const PORTFOLIO_DATA = {
   },
 
   highlights: [
-    { label: "Experience", value: "3.5+ Yrs", detail: "Enterprise scale at Accenture" },
+    { label: "Experience", value: "3+ Yrs", detail: "Enterprise scale at Accenture" },
     { label: "Core Stack", value: ".NET & Azure", detail: "Cloud microservices & APIs" },
     { label: "Recognition", value: "2x ACE Awards", detail: "Accenture technical excellence" },
     { label: "Certifications", value: "3x Microsoft", detail: "AZ-900, MS-900, PL-900" }
@@ -54,7 +55,7 @@ export const PORTFOLIO_DATA = {
         "Spearheaded backend architecture and cloud integration for enterprise solutions with .NET Core and Microsoft Azure.",
         "Engineered serverless processing pipelines using Azure Functions for multi-modal audio/video translation and Teams notifications.",
         "Guided front-end teams on React UI integrations, conducted code reviews, and mentored 3 junior developers to uphold code quality.",
-        "Awarded the Accenture ACE Award (06/2023) for delivery excellence on the Microsoft Viva Oracle Connector."
+        "Earned two Accenture ACE Awards for delivery excellence on the Microsoft Viva Oracle Connector (06/2023) and CIBC @Home Application (01/2023)."
       ],
       technologies: ["C#", ".NET Core", "Microsoft Azure", "Azure Functions", "ReactJS", "REST APIs", "CI/CD"]
     },
@@ -67,7 +68,7 @@ export const PORTFOLIO_DATA = {
         "Developed and maintained high-throughput backend APIs for real-time meeting management and telehealth notification queues.",
         "Implemented real-time state synchronization using Redis Distributed Cache and SignalR WebSockets for virtual clinical visits.",
         "Streamed high-volume telemetry and participant data using Azure Event Hubs and Cosmos DB Change Feed triggers.",
-        "Awarded the Accenture ACE Award (01/2023) for full-stack contributions to the CIBC @Home application."
+        "Collaborated across engineering squads on unit testing, peer code reviews, and database schema optimizations for MSK Telemedicine."
       ],
       technologies: ["C#", "ASP.NET Core", "Redis Cache", "SignalR", "Azure Event Hubs", "Cosmos DB", "SQL Server"]
     }
